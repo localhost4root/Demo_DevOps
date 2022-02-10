@@ -9,7 +9,7 @@ resource "aws_instance" "infrastructure"{
 resource "aws_security_group" "ASG"{
   name = "My Demo infrastructure"
   description = "In this way i try IAAC"
-}
+
 ingress{
   from port = 80
   to_port = 80
@@ -39,4 +39,5 @@ egress{
   to_port = 0
   protocol = "-1"
   cidr_blocks = ["0.0.0.0/0"]
+}
 }
