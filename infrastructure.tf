@@ -9,6 +9,9 @@ resource "aws_instance" "infrastructure"{
   ami = "ami-0d527b8c289b4af7f"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ASG.id]
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.web.public_ip} >> /tmp/myip.txt"
+  }
 }
 locals {
   ports_in = [
@@ -51,6 +54,4 @@ resource "aws_security_group" "ASG"{
   }
 
 }
- output "bastion.ip" {
-  value = "${aws_eip.bastion.public_ip}"
-}
+
