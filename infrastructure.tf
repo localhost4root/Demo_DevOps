@@ -51,4 +51,6 @@ resource "aws_security_group" "ASG"{
   }
 
 }
- 
+ output "bastion.ip" {
+  value = "${aws_eip.bastion.public_ip}"
+}
