@@ -10,7 +10,7 @@ resource "aws_instance" "infrastructure"{
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ASG.id]
   provisioner "local-exec" {
-    command = "echo ${self.public_ip} >> /tmp/private_ips.txt"
+    command = "echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt"
   }
 }
 locals {
