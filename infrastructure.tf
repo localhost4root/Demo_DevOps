@@ -17,6 +17,7 @@ resource "aws_instance" "infrastructure"{
 }
 locals {
   ports_in = [
+    22,
     443,
     80,
     9100,
