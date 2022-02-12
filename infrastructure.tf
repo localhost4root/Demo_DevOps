@@ -11,9 +11,9 @@ resource "aws_instance" "infrastructure"{
   vpc_security_group_ids = [aws_security_group.ASG.id]
   provisioner "local-exec" {
     command = "echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt"
+  }
   associate_public_ip_address = true
   key_name         = "ssh-key"
-  }
 }
 locals {
   ports_in = [
