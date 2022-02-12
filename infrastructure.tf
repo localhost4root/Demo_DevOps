@@ -55,9 +55,9 @@ resource "aws_security_group" "ASG"{
       cidr_blocks      = ["0.0.0.0/0"]
     }
   }
-  resource "aws_key_pair" "ssh-key" {
+  
+}
+resource "aws_key_pair" "ssh-key" {
     key_name   = "ssh-key"
     public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDHI9CQY1nU+tI50t2VZ8w8ErtMwfB2CDhjz0OSg19gaRYc3eAHtp7adFShasRACQ0sy1F3aXSrThuALM+3voJLUpARxELjYy7Q2Q66R3PeFp1dnXo4e/61Fo/wTnwgiPISeIXeKFzgZZrvl8hd3+/+Y1wXQRif4rE+R/0YDvjHqwcfylNEiRKF4jHX+tPcXt1g5sX3glaesNseAOw62kwAkxSbcbJloUjqVwUKnSPGp6q+gIlXyWgFhWSnh2yxihEdzAUBLefP3XrqeNzEiMfq7QbyRryp1+7GM+JPAxX6G17tWuuZ5y6y4T3+MEXqbXlMsKcc8nbo9/2pZ1pVXWht0AQZEIImzYf3Lj9Knte05A0FwRMFlg+EWqwtFE2ZWdHe3GUQe/29y1wx5DcUEsOCgL2v0GeGtxu1TGVJKZ9d8BJnD0YfNF8iZnkXvJUtVUtMUqE7Q5RsRKi/otVYlGNBu2i8rDe/2qC4883yQsXOqWbXVIPP1c+8OvoYzRCXfrc= root@vm1374270"
 }
-}
-
