@@ -16,6 +16,13 @@ resource "aws_instance" "infrastructure"{
    # "sudo sh get-docker.sh",
     
   }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt-get update",
+      "curl -fsSL https://get.docker.com -o get-docker.sh",
+      "sudo sh test-docker.sh"
+    ]
+  }
   associate_public_ip_address = true
   key_name         = "ssh-key"
   
