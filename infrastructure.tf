@@ -11,7 +11,7 @@ resource "aws_instance" "infrastructure"{
   vpc_security_group_ids = [aws_security_group.ASG.id]
  
   provisioner "local-exec" {
-    command = [ "echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt",
+    inline  = [ "echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt",
     "curl -fsSL get.docker.com -o get-docker.sh",
     "sudo sh get-docker.sh",
     ]
