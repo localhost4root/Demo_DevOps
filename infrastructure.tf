@@ -9,13 +9,11 @@ resource "aws_instance" "infrastructure"{
   ami = "ami-0d527b8c289b4af7f"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ASG.id]
-  user_data = <<EOF
-#!/bin/sh
-curl -fsSL get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-EOF
+ 
   provisioner "local-exec" {
     command = "echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt"
+    command2 = "curl -fsSL get.docker.com -o get-docker.sh"
+    command3 = "sudo sh get-docker.sh"
   }
   associate_public_ip_address = true
   key_name         = "ssh-key"
