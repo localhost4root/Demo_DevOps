@@ -13,8 +13,8 @@ resource "aws_instance" "infrastructure"{
   #provisioner "local-exec" {
    # command =  "echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt"
  # }
-  command =<<EOF
-#!/bin/sh
+  user_data =<<EOF
+#!/bin/bash
 echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt
 sudo apt-get update -y
 curl -fsSL https://get.docker.com -o get-docker.sh
