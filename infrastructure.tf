@@ -12,8 +12,8 @@ resource "aws_instance" "infrastructure"{
  
   provisioner "local-exec" {
     command = "echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt"
-    command = "curl -fsSL get.docker.com -o get-docker.sh"
-    command = "sudo sh get-docker.sh"
+    #command = "curl -fsSL get.docker.com -o get-docker.sh"
+    #command = "sudo sh get-docker.sh"
   }
   associate_public_ip_address = true
   key_name         = "ssh-key"
