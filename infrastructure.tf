@@ -10,19 +10,17 @@ resource "aws_instance" "infrastructure"{
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ASG.id]
  
+  #provisioner "local-exec" {
+   # command =  "echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt"
+ # }
   provisioner "local-exec" {
-    command =  "echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt"
-    #"curl -fsSL get.docker.com -o get-docker.sh",
-   # "sudo sh get-docker.sh",
-    
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt-get update",
+    inline = [ "echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt",
+      "sudo apt-get update -y",
       "curl -fsSL https://get.docker.com -o get-docker.sh",
       "sudo sh test-docker.sh"
-    ]
+      ]
   }
+ 
   associate_public_ip_address = true
   key_name         = "ssh-key"
   
