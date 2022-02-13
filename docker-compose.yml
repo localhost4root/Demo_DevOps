@@ -6,6 +6,7 @@ services:
   restart: always
   volumes:
    - ./templates:/etc/nginx/templates
+   - ./project:/usr/share/nginx/html
   ports:
    - "80:80"
   environment:
