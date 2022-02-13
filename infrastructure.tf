@@ -13,15 +13,14 @@ resource "aws_instance" "infrastructure"{
   #provisioner "local-exec" {
    # command =  "echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt"
  # }
-  provisioner "local-exec" {
-    command =<<EOF
-    #!/bin/sh
-    echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt
-    sudo apt-get update -y
-    curl -fsSL https://get.docker.com -o get-docker.sh
-    sudo sh test-docker.sh
-    EOF
-  }
+  command =<<EOF
+#!/bin/sh
+echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt
+sudo apt-get update -y
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+EOF
+  
  
   associate_public_ip_address = true
   key_name         = "ssh-key"
