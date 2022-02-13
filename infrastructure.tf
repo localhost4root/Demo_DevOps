@@ -10,12 +10,12 @@ resource "aws_instance" "infrastructure"{
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ASG.id]
  
-  #provisioner "local-exec" {
-   # command =  "echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt"
- # }
+  provisioner "local-exec" {
+    command =  "echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt"
+  }
   user_data =<<EOF
 #!/bin/bash
-echo ${aws_instance.infrastructure.public_ip} >> /tmp/private_ips.txt
+
 sudo apt-get update -y
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
